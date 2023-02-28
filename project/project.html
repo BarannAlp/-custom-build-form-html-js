@@ -1,0 +1,162 @@
+<html>
+<script>
+    function publishToTable() {
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "checkbox"); 
+        const name = document.getElementById('name').value;
+        const specie = document.getElementById('specie').value;
+        const error = document.getElementById('error');
+        error.innerHTML = (!name || !specie) ? 'Name & Specie both values are required.' : '';
+        if (name && specie) {
+            const tableElement = document.getElementById('table');
+            const trElement = document.createElement('tr');
+            const tbodyElement = document.createElement('tbody');
+            const nameEle = document.createElement('td');
+            const specieEle = document.createElement('td');
+            nameEle.innerHTML = name;
+            specieEle.innerHTML = specie;
+            trElement.appendChild(x);
+            trElement.appendChild(nameEle);
+            trElement.appendChild(specieEle);
+            tbodyElement.appendChild(trElement);
+            tableElement.appendChild(tbodyElement);
+        }
+    }
+     
+        function deleteRows2(){
+            var tableRows = document.getElementById("table").rows;
+for (var i = 1; i < tableRows.length; i++) {
+   
+    if(tableRows[i].querySelector('input[type="checkbox"]').checked)
+    {
+table.deleteRow(i);
+    }
+}
+            }
+
+
+</script>
+
+<body  bgcolor="#2f4f4f">
+    <style>
+        .header {
+  padding: 10px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+} 
+        label {
+          
+           
+            font-size: 32px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+        }
+        div.complete {
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10%;
+            
+        }
+       div.form2{
+        margin-top: 30px;  
+       }
+
+        input {
+            
+            
+            padding: 10px;
+        }
+
+        span {
+            color: red;
+            
+        }
+
+        select{
+            
+            padding: 13px;
+           
+
+        }
+
+        button {
+            padding: 20px;
+            margin-top: 30px;  
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+            background-color:#0a0a23;
+             color: #fff;
+             border:none;
+             border-radius:10px;
+             
+        }
+        .button3 {background-color: #800000;}
+        div#tables {
+            height: 200px;
+            overflow: auto;
+        }
+
+        table,
+        th,
+        td {
+            background-color: #1abc9c;
+            margin-top: 30px;  
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+            padding: 20px;
+        }
+
+        th {
+            width: 20%;
+        }
+    </style>
+
+<div class="header">
+    <h1>PetRecord</h1>
+    <p>Best way to keep track of your pets!</p>
+  </div>
+
+    <div class="complete">
+        <div class="form">
+            <label>Name: <input id="name" type="text"></label>
+            <div class="form2">
+            <label>Specie:</label>
+            <select id="specie" >
+            
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Fish">Fish</option>
+                <option value="Bird">Bird</option>
+            </select>
+        </div>
+            <span id="error"></span>
+            <button class="button button2"onclick="publishToTable()">Add</button>
+            <button class="button button3" onclick="deleteRows2()">Delete</button>
+
+           
+
+        </div>
+        <div id="tables">
+            <table id="table">
+                <thead>
+                 
+                    <tr>
+                        <th>Select</th>
+                        <th>Name </th>
+                        
+                        <th>Specie</th>   
+                                    
+                    </tr>
+                   
+                </thead>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+</html>
